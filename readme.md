@@ -1,1 +1,1 @@
-This is site of fictive Internet shop.
+This is site of fictional Internet shop.

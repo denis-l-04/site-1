@@ -1,0 +1,27 @@
+body {
+	font-family: Calibri;
+}
+#logo {
+	font-size: 2em;
+	font-family: "Courier New", Calibri;
+	font-weight:bolder;
+	text-align: center;
+}
+header {
+	background-color: #bfb;
+	border: solid 1px #454;
+}
+header ul {
+	list-style-type: none;
+}
+footer {
+	background-color: #bfb;
+	border: solid 1px #454;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+.product_image {
+	outline: 5px solid black;
+}
