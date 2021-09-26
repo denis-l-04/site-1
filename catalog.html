@@ -6,25 +6,77 @@
 		<title>Phone Sale - каталог</title>
 	</head>
 	<body>
-		<header>
-			<div id="logo">Phone Sale</div>
-		<hr>
-		<ul>
-			<li><a href="index.html">На главную</a>
-		</ul>
-		</header>
-		
-		<h1>Сейчас в продаже</h1>
-		<p>
-			<ul>
-				<li> <a href="product000123.html">Флагман AF423</a>
-				<li> <a href="product004567.html">Наушники UQ 5</a>
-			</ul>
-		</p>
-		<hr>
-		
-		<footer>
-			<a href="about.html">О нас</a>
-		</footer>
+		<div class="container">
+			<header>
+				<a id="logo-a" href="index.html">
+					<img id="logo-img" src="images/logo.png">
+				</a>
+				<ul class="menu">
+					<li class="inline-li">
+						<a href="index.html">Главная</a>
+					</li>
+					<li class="inline-li">
+						<a href="catalog.html">Каталог</a>
+					</li>
+				</ul>
+			</header>
+			
+			<h1>Сейчас в продаже</h1>
+			<div class="prod-card-container">
+				<div class="prod-card">
+					<a class="prod-card-img-a" href="product000123.html">
+						<img class="prod-card-img" src="images/product000123.jpg">
+					</a>
+					<span class="prod-card-name">Флагман AF423</span>
+					<span class="prod-card-price">19 876 P</span>
+					<br><br>
+					<div>
+						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit.
+					</div>
+				</div>
+				<div class="prod-card">
+					<a class="prod-card-img-a" href="product117934.html">
+						<img class="prod-card-img" src="images/product117934.jpg">
+					</a>
+					<span class="prod-card-name">Наушники Apple AirPods</span>
+					<span class="prod-card-price">11 290 P</span>
+					<br><br>
+					<div>
+						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+					</div>
+				</div>
+				<div class="prod-card">
+					<a class="prod-card-img-a" href="product912721.html">
+						<img class="prod-card-img" src="images/product912721.jpg">
+					</a>
+					<span class="prod-card-name">Смартфон BQ 6424L Magic O</span>
+					<span class="prod-card-price">8 990 P</span>
+					<br><br>
+					<div>
+						Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
+					</div>
+				</div>
+				<div class="prod-card">
+					<a class="prod-card-img-a" href="product321456.html">
+						<img class="prod-card-img" src="images/product321456.jpg">
+					</a>
+					<span class="prod-card-name">Наушники TWS Philips UpBeat TAUT102BK</span>
+					<span class="prod-card-price">2 999 P</span>
+					<br><br>
+					<div>
+						Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit.
+					</div>
+				</div>
+			</div>
+			
+			<footer>
+				<span>ОАО "PhoneSale"</span>
+				<ul class="menu">
+					<li class="inline-li">
+						<a href="about.html">О нас</a>
+					</li>
+				</ul>
+			</footer>
+		</div>
 	</body>
 </html>
