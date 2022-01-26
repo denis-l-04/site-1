@@ -1,6 +1,6 @@
 import sqlite3
 
-def init(path: str) -> connection_and_cursor:
-    db_conn = sqlite3.connect(path)
-    db_cursor = db_conn.cursor()
-    return db_conn, db_cursor
+def init(path: str) -> tuple:
+    db_con = sqlite3.connect(path)
+    db_cursor = db_con.cursor()
+    return db_con, db_cursor
