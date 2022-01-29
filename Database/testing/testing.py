@@ -5,54 +5,49 @@ import inspect
 db_dir = os.path.dirname(os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))))
 print('path is', db_dir)
 sys.path.insert(0, db_dir)
-import db_init
+DBPATH = 'sqlite:///testing/testing.db'
+from db_init import *
 import TYPICAL_REQUESTS
-
-
-db_con, db_cur = db_init.init(db_dir+'\\testing\\testing.db')
 
 class WrappedRequestsTest(unittest.TestCase):    
     def tearDown(self) -> None:
-        db_con.rollback()
-    
-    @classmethod
-    def tearDownClass(self) -> None:
-        db_con.close()
+        alch.session.rollback()
     
     def test_provider_of_product(self):
-        self.assertEqual(TYPICAL_REQUESTS.provider_of_product(db_cur, 'Ноутбук FCNPZ'), 'Handsome Company')
-        self.assertEqual(TYPICAL_REQUESTS.provider_of_product(db_cur, 'Флагман P1'), 'TurnipDisagreeable Technologies')
-        self.assertEqual(TYPICAL_REQUESTS.provider_of_product(db_cur, 'Салфетки для техники IGUU'), 'EnergeticPumpkin')
+        self.assertEqual(TYPICAL_REQUESTS.provider_of_product(Products.by_name('Ноутбук FCNPZ')), Providers.by_name('Handsome Company'))
+        self.assertEqual(TYPICAL_REQUESTS.provider_of_product(Products.by_name('Флагман P1')), Providers.by_name('TurnipDisagreeable Technologies'))
+        self.assertEqual(TYPICAL_REQUESTS.provider_of_product(Products.by_name('Салфетки для техники IGUU')), Providers.by_name('EnergeticPumpkin'))
     
-    def test_product_from_city(self):
-        l = TYPICAL_REQUESTS.product_from_city(db_cur, 'Вашингтон')
-        self.assertCountEqual(l, [('Флагман P1',)])
-        l = TYPICAL_REQUESTS.product_from_city(db_cur, 'Лондон')
+    def test_products_from_city(self):
+        l = TYPICAL_REQUESTS.products_from_city(Cities.by_name('Вашингтон'))
+        self.assertCountEqual(l, [Products.by_name('Флагман P1')])
+        l = TYPICAL_REQUESTS.products_from_city(Cities.by_name('Лондон'))
         self.assertCountEqual(l, [])
-        l = TYPICAL_REQUESTS.product_from_city(db_cur, 'Варшава')
+        l = TYPICAL_REQUESTS.products_from_city(Cities.by_name('Варшава'))
         self.assertCountEqual(l, [])
-        l = TYPICAL_REQUESTS.product_from_city(db_cur, 'Саратов')
-        self.assertCountEqual(l, [('Колонки DarkEJK',), ('Аккумулятор NY150', ), ('Смартфон CheerfulP94N',), ('Мышь 9M',)])
+        l = TYPICAL_REQUESTS.products_from_city(Cities.by_name('Саратов'))
+        self.assertCountEqual(l, [Products.by_name('Колонки DarkEJK'), Products.by_name('Аккумулятор NY150'),\
+            Products.by_name('Смартфон CheerfulP94N'), Products.by_name('Мышь 9M')])
     
     def test_recent_buyers(self):
-        l = TYPICAL_REQUESTS.recent_buyers(db_cur, '2022-01-17')
-        self.assertCountEqual(l, [('Тимур', 'Пономарёв'), ('Максим', 'Королёв')])
-        l = TYPICAL_REQUESTS.recent_buyers(db_cur, '2022-01-18')
-        self.assertCountEqual(l, [('Тимур', 'Пономарёв')])
-        l = TYPICAL_REQUESTS.recent_buyers(db_cur, '2077-11-23')
+        l = TYPICAL_REQUESTS.recent_buyers(datetime.date.fromisoformat('2022-01-17'))
+        self.assertCountEqual(l, [Users.by_name_surname('Тимур', 'Пономарёв'), Users.by_name_surname('Максим', 'Королёв')])
+        l = TYPICAL_REQUESTS.recent_buyers(datetime.date.fromisoformat('2022-01-18'))
+        self.assertCountEqual(l, [Users.by_name_surname('Тимур', 'Пономарёв')])
+        l = TYPICAL_REQUESTS.recent_buyers(datetime.date.fromisoformat('2077-11-23'))
         self.assertCountEqual(l, [])
     
     def test_favorite_of_user(self):
-        self.assertEqual(TYPICAL_REQUESTS.favorite_of_user(db_cur, 'Владимир', 'Фомичёв'), 'Процессор JSM')
-        self.assertEqual(TYPICAL_REQUESTS.favorite_of_user(db_cur, 'Марк', 'Антонов'), 'Ноутбук FCNPZ')
+        self.assertEqual(TYPICAL_REQUESTS.favorite_of_user(Users.by_name_surname('Владимир', 'Фомичёв')), [Products.by_name('Процессор JSM')])
+        self.assertEqual(TYPICAL_REQUESTS.favorite_of_user(Users.by_name_surname('Марк', 'Антонов')), [Products.by_name('Ноутбук FCNPZ')])
     
     def test_country_of_provider(self):
-        self.assertEqual(TYPICAL_REQUESTS.country_of_provider(db_cur, 'WatermelonApricot'), 'Россия')
-        self.assertEqual(TYPICAL_REQUESTS.country_of_provider(db_cur, 'PeaCherry'), 'Канада')
+        self.assertEqual(TYPICAL_REQUESTS.country_of_provider(Providers.by_name('WatermelonApricot')), Countries.by_name('Россия'))
+        self.assertEqual(TYPICAL_REQUESTS.country_of_provider(Providers.by_name('PeaCherry')), Countries.by_name('Канада'))
     
     def test_last_supply_of_product(self):
-        self.assertEqual(TYPICAL_REQUESTS.last_supply_of_product(db_cur, 'Флагман 1O47'), '2021-04-15')
-        self.assertEqual(TYPICAL_REQUESTS.last_supply_of_product(db_cur, 'Мышь ConceitedJF9G'), '2019-10-23')
+        self.assertEqual(TYPICAL_REQUESTS.last_supply_of_product(Products.by_name('Флагман 1O47')), datetime.date.fromisoformat('2021-04-15'))
+        self.assertEqual(TYPICAL_REQUESTS.last_supply_of_product(Products.by_name('Мышь ConceitedJF9G')), datetime.date.fromisoformat('2019-10-23'))
 
 if __name__=='__main__':
     unittest.main()
