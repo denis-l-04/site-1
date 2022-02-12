@@ -1,7 +1,4 @@
-import datetime
-from db_init import *
-
-print('ORM models imported!')
+from app.app_init import *
 
 class Cities(alch.Model):
     id = alch.Column(alch.Integer, primary_key = True)
@@ -124,3 +121,5 @@ class Users(alch.Model):
         for x in Users.query.filter_by(name = name, surname = surname):
             return x
         return None
+
+print('ORM models included')
