@@ -122,4 +122,10 @@ class Users(alch.Model):
             return x
         return None
 
+class Feedback(alch.Model):
+    id = alch.Column(alch.Integer, primary_key = True)
+    name = alch.Column(alch.String(80))
+    email = alch.Column(alch.String(80))
+    text = alch.Column(alch.String(80))
+
 print('ORM models included')

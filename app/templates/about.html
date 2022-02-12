@@ -4,14 +4,27 @@
 Phone Sale - о нас
 {%endblock%}
 
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='about.css') }}">
+{% endblock %}
+
 {% block content %}
+	<h1>Отзывы</h1>
+	{% for comment in feedback: %}
+	<div class="comment">
+		<div class="comment-name">{{comment.name}}</div>
+		<div class="comment-email">{{comment.email}}</div>
+		<div class="comment-text">{{comment.text}}</div>
+	</div>
+	{% endfor %}
 	<p>
-		<form>
+		<form method="post">
 			<legend>Поделитесь своим мнением</legend>
-			Ваше имя <input type="text" placeholder="Ваше имя"> <br>
-			Адрес почты <input type="email" placeholder="Ваша почта"><br>
+			Ваше имя <input type="text" name="name" placeholder="Ваше имя"> <br>
+			Адрес почты <input type="email" name="email" placeholder="Ваша почта"><br>
 			Отзыв<br>
-			<textarea cols="68" rows="10"></textarea>
+			<textarea name="text" cols="68" rows="10"></textarea>
 			<br>
 			<input type="submit" value="Отправить">
 			<input type="reset" value="Стереть">
