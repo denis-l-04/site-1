@@ -1,6 +1,5 @@
-from ORM_models import *
-
-print('REQUESTS imported!')
+import datetime
+from app.ORM_models import *
 
 #Поставщик для товара product
 def provider_of_product(product: Products) -> Providers:
@@ -47,3 +46,5 @@ def last_supply_of_product(product: Products):
         if mxd == None or mxd < s.date:
             mxd = s.date
     return mxd
+
+print('database typical requests included')

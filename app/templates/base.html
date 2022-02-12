@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		{% block styles %}
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='base.css') }}">
+        {% endblock %}
+		<title>{%block title%}Phone Sale - Интернет-магазин{%endblock%}</title>
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<a href="">
+					<img src="{{ url_for('static', filename='images/logo.png') }}" height = 100%>
+				</a>
+				<ul class="header_footer_menu">
+					<li>
+						<a href="">Главная</a>
+					</li>
+					<li>
+						<a href="catalog">Каталог</a>
+					</li>
+				</ul>
+			</header>
+            {% block content %}{% endblock %}
+			<footer>
+				<span>ОАО "PhoneSale"</span>
+				<ul class="header_footer_menu">
+					<li>
+				        <a href="about">О нас</a>
+					</li>
+				</ul>
+			</footer>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+body {
+	font-family: Arial, sans-serif;
+	font-size: 20px;
+	margin: 0px;
+}
+.container {
+	width: 70%;
+	margin: 0px auto;
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+header {
+	position: relative;
+	height: 100px;
+	padding: 10px;
+	line-height: 100px;
+	background-color: #fa0;
+}
+.header_footer_menu {
+	display: inline;
+	position: absolute;
+	right: 0px;
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+.header_footer_menu li {
+	display: inline;
+	margin: 0px 20px;
+}
+footer {
+    position: relative;
+	height: 50px;
+	line-height: 50px;
+	padding: 10px;
+	background-color: #ccc;
+}
