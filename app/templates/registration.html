@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+Регистрация в PhoneSale
+{% endblock %}
+
+{% block content %}
+    <h1 style="text-align: center;">Создание учётной записи</h1>
+    <div style="padding: 0px 20vw;">
+        <form method="POST">
+            Обязательно:
+            <br>
+            <input type="text" name="email" class="form-control" placeholder="Введите почту">
+            <br>
+            <input type="password" name="password" class="form-control" placeholder="Пароль">
+            <br>
+            <input type="text" name="name" class="form-control" placeholder="Имя">
+            <br>
+            <input type="text" name="surname" class="form-control" placeholder="Фамилия">
+            <br>
+            <input type="text" name="birth_date" class="form-control" placeholder="Дата рождения гггг-мм-дд">
+            <br>
+            По желанию:
+            <br>
+            <input type="text" name="phone" class="form-control" placeholder="Телефон +ddddddddddd">
+            <br>
+            <input type="submit" value="Зарегистрироваться" class="btn btn-primary">
+        </form>
+    </div>
+{% endblock %}

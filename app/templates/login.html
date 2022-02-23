@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{%block title%}
+Регистрация в PhoneSale
+{%endblock%}
+
+
+{% block content %}
+    <h1 style="text-align: center;">Вход в учётную запись</h1>
+    <div style="padding: 0px 20vw;">
+        <form method="POST">
+            <input type="text" name="email" class="form-control" placeholder="Введите почту">
+            <br>
+            <input type="password" name="password" class="form-control" placeholder="Пароль">
+            <br>
+            <input type="submit" value="Войти" class="btn btn-primary">
+        </form>
+    </div>
+{% endblock %}

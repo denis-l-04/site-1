@@ -10,27 +10,47 @@
 	<body>
 		<div class="container">
 			<header>
-				<a href="">
+				<a href="/">
 					<img src="{{ url_for('static', filename='images/logo.png') }}" height = 100%>
 				</a>
 				<ul class="header_footer_menu">
 					<li>
-						<a href="">Главная</a>
+						<a href="/">Главная</a>
 					</li>
 					<li>
-						<a href="catalog">Каталог</a>
+						<a href="/catalog">Каталог</a>
 					</li>
+					{% if session['email'] %}
+					<li>
+						{{ request.cookies.get('name') }}
+					</li>
+					<li>
+						<a href="/logout">Выйти</a>
+					</li>
+					{% else %}
+					<li>
+						<a href="/login">Войти</a>
+					</li>
+					<li>
+						<a href="/registration">Зарегистрироваться</a>
+					</li>
+					{% endif %}
 				</ul>
 			</header>
+			{% for cat, msg in get_flashed_messages(with_categories = True) %}
+			<div class="site-msg" style="background-color: {{cat}};">
+				{{ msg }}
+			</div>
+			{% endfor %}
             {% block content %}{% endblock %}
-			<footer>
-				<span>ОАО "PhoneSale"</span>
-				<ul class="header_footer_menu">
-					<li>
-				        <a href="about">О нас</a>
-					</li>
-				</ul>
-			</footer>
 		</div>
+		<footer>
+			<span>ОАО "PhoneSale"</span>
+			<ul class="header_footer_menu">
+				<li>
+					<a href="about">О нас</a>
+				</li>
+			</ul>
+		</footer>
 	</body>
 </html>

@@ -5,6 +5,7 @@ body {
 }
 .container {
 	width: 70%;
+	min-height: calc(100vh - 70px);
 	margin: 0px auto;
 }
 a {
@@ -37,4 +38,10 @@ footer {
 	line-height: 50px;
 	padding: 10px;
 	background-color: #ccc;
+}
+
+.site-msg {
+	margin: 10px 0px;
+	padding: 10px;
+	border-radius: 10px;
 }

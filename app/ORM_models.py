@@ -107,7 +107,7 @@ class Users(alch.Model):
     id = alch.Column(alch.Integer, primary_key = True)
     email = alch.Column(alch.String(80), unique = True)
     phone = alch.Column(alch.String(80), unique = True)
-    password = alch.Column(alch.String(80), nullable = False)
+    password_hash = alch.Column(alch.String(256))
     name = alch.Column(alch.String(80), nullable = False)
     surname = alch.Column(alch.String(80), nullable = False)
     birth_date = alch.Column(alch.Date, nullable = False)
