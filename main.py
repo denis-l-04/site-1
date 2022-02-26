@@ -1,3 +1,3 @@
 import app
 
-app.app.run(debug = True)
+app.app_obj.run(debug = True)

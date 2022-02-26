@@ -1,11 +1,11 @@
 import hashlib
 from app.db_requests import *
 
-@app.route('/')
+@app_obj.route('/')
 def index():
     return flask.render_template('index.html')
 
-@app.route('/about', methods = ['GET', 'POST'])
+@app_obj.route('/about', methods = ['GET', 'POST'])
 def post_feedback():
     if flask.request.method == 'POST':
         new_comment = Feedback(name = flask.escape(flask.request.form.get('name')),
@@ -15,11 +15,11 @@ def post_feedback():
         alch.session.commit()
     return flask.render_template('about.html', feedback = Feedback.query.all())
 
-@app.route('/catalog')
+@app_obj.route('/catalog')
 def catalog():
     return flask.render_template('catalog.html')
 
-@app.route('/registration', methods = ['GET', 'POST'])
+@app_obj.route('/registration', methods = ['GET', 'POST'])
 def registration():
     if flask.request.method == 'POST':
         if Users.query.filter_by(email = flask.request.form.get('email')).all():
@@ -50,7 +50,7 @@ def registration():
             return resp
     return flask.render_template('registration.html')
 
-@app.route('/login', methods = ['GET', 'POST'])
+@app_obj.route('/login', methods = ['GET', 'POST'])
 def login():
     if flask.request.method == 'POST':
         current_user = None
@@ -68,7 +68,7 @@ def login():
             flask.flash('Неправильный адрес почты или пароль.', '#f66')
     return flask.render_template('login.html')
 
-@app.route('/logout')
+@app_obj.route('/logout')
 def logout():
     resp = flask.redirect('/')
     if flask.session.get('email'):
