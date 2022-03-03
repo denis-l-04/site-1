@@ -9,11 +9,11 @@ class Cities(alch.Model):
     def __repr__(self) -> str:
         return f'{self.name} city'
     
-    def by_name(name: str):
-        '''finds city or returns None'''
-        for x in Cities.query.filter_by(name = name):
-            return x
-        return None
+def city_by_name(name: str):
+    '''finds city or returns None'''
+    for x in Cities.query.filter_by(name = name):
+        return x
+    return None
 
 class Countries(alch.Model):
     id = alch.Column(alch.Integer, primary_key = True)
@@ -22,11 +22,11 @@ class Countries(alch.Model):
     def __repr__(self) -> str:
         return f'{self.name} country'
     
-    def by_name(name: str):
-        '''finds country or returns None'''
-        for x in Countries.query.filter_by(name = name):
-            return x
-        return None
+def country_by_name(name: str):
+    '''finds country or returns None'''
+    for x in Countries.query.filter_by(name = name):
+        return x
+    return None
 
 class Producers(alch.Model):
     id = alch.Column(alch.Integer, primary_key = True)
@@ -37,11 +37,11 @@ class Producers(alch.Model):
     def __repr__(self) -> str:
         return f'{self.name} producer'
     
-    def by_name(name: str):
-        '''finds producer or returns None'''
-        for x in Producers.query.filter_by(name = name):
-            return x
-        return None
+def producer_by_name(name: str):
+    '''finds producer or returns None'''
+    for x in Producers.query.filter_by(name = name):
+        return x
+    return None
 
 class Products(alch.Model):
     id = alch.Column(alch.Integer, primary_key = True)
@@ -58,11 +58,11 @@ class Products(alch.Model):
     def __repr__(self) -> str:
         return f'{self.name} product'
     
-    def by_name(name: str):
-        '''finds product or returns None'''
-        for x in Products.query.filter_by(name = name):
-            return x
-        return None
+def product_by_name(name: str):
+    '''finds product or returns None'''
+    for x in Products.query.filter_by(name = name):
+        return x
+    return None
 
 class Providers(alch.Model):
     id = alch.Column(alch.Integer, primary_key = True)
@@ -73,11 +73,11 @@ class Providers(alch.Model):
     def __repr__(self) -> str:
         return f'{self.name} provider'
     
-    def by_name(name: str):
-        '''finds provider or returns None'''
-        for x in Providers.query.filter_by(name = name):
-            return x
-        return None
+def provider_by_name(name: str):
+    '''finds provider or returns None'''
+    for x in Providers.query.filter_by(name = name):
+        return x
+    return None
 
 class Purchases(alch.Model):
     id = alch.Column(alch.Integer, primary_key = True)
@@ -107,7 +107,7 @@ class Users(alch.Model):
     id = alch.Column(alch.Integer, primary_key = True)
     email = alch.Column(alch.String(80), unique = True)
     phone = alch.Column(alch.String(80), unique = True)
-    password = alch.Column(alch.String(80), nullable = False)
+    password_hash = alch.Column(alch.String(256))
     name = alch.Column(alch.String(80), nullable = False)
     surname = alch.Column(alch.String(80), nullable = False)
     birth_date = alch.Column(alch.Date, nullable = False)
@@ -116,10 +116,16 @@ class Users(alch.Model):
     def __repr__(self) -> str:
         return f'{self.name} {self.surname} {self.email}'
     
-    def by_name_surname(name, surname: str):
-        '''finds user or returns None'''
-        for x in Users.query.filter_by(name = name, surname = surname):
-            return x
-        return None
+def user_by_name_surname(name, surname: str):
+    '''finds user or returns None'''
+    for x in Users.query.filter_by(name = name, surname = surname):
+        return x
+    return None
+
+class Feedback(alch.Model):
+    id = alch.Column(alch.Integer, primary_key = True)
+    name = alch.Column(alch.String(80))
+    email = alch.Column(alch.String(80))
+    text = alch.Column(alch.String(80))
 
 print('ORM models included')

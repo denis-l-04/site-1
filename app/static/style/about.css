@@ -1,0 +1,15 @@
+.comment {
+    background-color: rgb(255, 160, 71);
+    padding: 20px;
+}
+.comment-name {
+    background-color: white;
+    font-weight: bold;
+}
+.comment-email {
+    background-color: white;
+    font-family: 'Courier New', monospace;
+}
+.comment-text {
+    background-color: white;
+}
