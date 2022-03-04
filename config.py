@@ -1,8 +1,8 @@
 import os
 
 SECRET_KEY = 'greedywindow123'
-DEBUG = True
-TESTING = True
+DEBUG = False
+TESTING = False
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 if not TESTING:
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'database.db')
